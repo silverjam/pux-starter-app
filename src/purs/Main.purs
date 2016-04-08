@@ -1,5 +1,6 @@
 module Main where
 
+import Control.Monad.Eff.Console (CONSOLE)
 import App.Routes (match)
 import App.Layout (Action(PageView), State, view, update)
 import Control.Monad.Eff (Eff)
@@ -11,7 +12,7 @@ import Pux.Router (sampleUrl)
 import Signal ((~>))
 import Signal.Channel (CHANNEL)
 
-type AppEffects eff = (err :: EXCEPTION, channel :: CHANNEL | eff)
+type AppEffects eff = (err :: EXCEPTION, channel :: CHANNEL, console :: CONSOLE | eff)
 
 -- | Entry point for the browser.
 main :: State -> Eff (AppEffects (dom :: DOM)) (App State Action)
@@ -24,7 +25,7 @@ main state = do
 
   app <- start
     { initialState: state
-    , update: fromSimple update
+    , update: update
     , view: view
     , inputs: [routeSignal] }
 
