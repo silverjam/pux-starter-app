@@ -21,7 +21,7 @@ update Increment count =
   , effects: [liftEff $ log "increment" *> return Nop]
   }
 update Decrement count =
-  { state: count + 1
+  { state: count - 1
   , effects: [liftEff $ log "decrement" *> return Nop]
   }
 update Nop count = noEffects $ count
