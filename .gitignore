@@ -5,3 +5,4 @@ output
 dist
 .psci_modules
 npm-debug.log
+static/dist/

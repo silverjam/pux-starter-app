@@ -11,10 +11,10 @@
   ],
   "scripts": {
     "postinstall": "./node_modules/.bin/bower cache clean && ./node_modules/.bin/bower install",
-    "clean": "rimraf dist && rimraf output",
+    "clean": "rimraf static/dist && rimraf output",
     "build": "npm run clean && set NODE_ENV=production && ./node_modules/.bin/webpack --config ./webpack.production.config.js --progress --profile --colors",
     "serve:watch": "node ./webpack.config.js",
-    "serve:prod": "http-server dist --cors -p 3000",
+    "serve:prod": "http-server static --cors -p 3000",
     "start": "npm run serve:watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,9 +28,13 @@
     "url": "https://github.com/alexmingoia/pux-starter-app/issues"
   },
   "dependencies": {
+    "purescript": "^0.8.4",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
-    "purescript": "^0.8.4"
+    "todomvc-app-css": "^2.0.4",
+    "todomvc-common": "^1.0.2",
+    "uuid": "^2.0.2",
+    "uuid-validate": "0.0.2"
   },
   "devDependencies": {
     "bower": "^1.7.9",

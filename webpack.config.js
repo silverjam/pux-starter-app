@@ -14,7 +14,7 @@ var config = {
   debug: true,
   devtool: 'cheap-module-eval-source-map',
   output: {
-    path: path.resolve('./dist'),
+    path: path.resolve('./static/dist'),
     filename: '[name].js',
     publicPath: '/'
   },
@@ -90,6 +90,7 @@ if (require.main === module) {
   // webpack-dev-server, because webpack-hot-middleware provides more reliable
   // HMR behavior, and an in-browser overlay that displays build errors
   app
+    .use(express.static('./static'))
     .use(require("webpack-dev-middleware")(compiler, {
       publicPath: config.output.publicPath,
       stats: {
