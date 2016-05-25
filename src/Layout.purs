@@ -1,7 +1,7 @@
 module App.Layout where
 
 import App.Counter as Counter
-import App.Routes (Route(Home, NotFound))
+import App.Routes (Route(Home, Bacon, NotFound))
 import Prelude (($), map)
 import Pux.Html (Html, div, h1, p, text)
 
@@ -26,9 +26,10 @@ view :: State -> Html Action
 view state =
   div
     []
-    [ h1 [] [ text "Pux Starter App" ]
+    [ h1 [] [ text "Pux Starter App Bacon 2" ]
     , p [] [ text "Change src/Layout.purs and watch me hot-reload." ]
     , case state.route of
         Home -> map Child $ Counter.view state.count
+        Bacon -> p [] [text "The bacon page"]
         NotFound -> App.NotFound.view state
     ]
